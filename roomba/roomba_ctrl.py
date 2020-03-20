@@ -183,38 +183,5 @@ sens_update = [sens_buttons,
                sens_bat_volts,
                sens_over_currents]
 
-############### Test Loop ######################################
-from roomba_ctrl import *
-
-def test():
-    print('Roomba Lives')
-    roomba.connect()
-    roomba.start()
-
-    roomba.flush_uart()
-    roomba.sensors_scan(sens_update)
-
-    roomba.play(ROOMBA_BEEP)
-    roomba.LEDS(0xFF)
-
-    time.sleep(3)
-
-    #roomba.sensors(sens_update, delay = .020)
-    time.sleep(.05)
-    roomba.sensors_aquire(sens_update)
-    for s in sens_update:
-        print(s.value)
-
-    #print(sens_oi_mode.value)
-    #print(sens_bat_volts.value)
-
-    time.sleep(1)
-    #sens_oi_mode.read(.020)
-    #sens_bat_volts.read(.020)
-    roomba.LEDS(0)
-    roomba.stop()
-    time.sleep(1)
-    roomba.disconnect()
-
 
 
